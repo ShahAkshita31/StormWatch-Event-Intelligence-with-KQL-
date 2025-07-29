@@ -1,0 +1,3 @@
+StromEvents
+| summarize EventCount = count() by EventType
+| top 5 by EventType
