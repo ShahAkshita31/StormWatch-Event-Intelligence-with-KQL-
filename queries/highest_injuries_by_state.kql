@@ -1,0 +1,7 @@
+StromEvents
+| where InjuriesDirect > 0 and InjuriesIndirect > 0
+| summarize Highest_Injuries_Direct = sum(InjuriesDirect),
+            Highest_Injuries_Indirect = sum(InjuriesIndirect)
+            by State
+| extend TotalInjuries = Highest_Injuries_Direct+ Highest_Injuries_Indirect 
+| project State, TotalInjuries
