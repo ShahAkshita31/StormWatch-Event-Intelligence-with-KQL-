@@ -1,0 +1,3 @@
+StromEvents
+| summarize EventCount = count() by State
+| top 5 by State
