@@ -1,0 +1,7 @@
+StromEvents
+| extend EventDuration = EndTime - StartTime
+| summarize 
+    maxDuration = max(EventDuration),
+    minDuration = min(EventDuration),
+    EventCount = count()
+    by EventType
