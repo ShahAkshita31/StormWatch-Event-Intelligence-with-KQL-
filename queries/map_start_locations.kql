@@ -1,0 +1,4 @@
+StromEvents
+| where isnotempty(BeginLat) and isnotempty(BeginLon)
+| project EventType, State, Latitude = BeginLat, Longitude = BeginLon
+| render scatterchart 
