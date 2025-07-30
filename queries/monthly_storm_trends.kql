@@ -1,0 +1,3 @@
+StromEvents
+| where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31))
+| summarize MonthlyEvents = count() by EventType, startofmonth(StartTime) 
