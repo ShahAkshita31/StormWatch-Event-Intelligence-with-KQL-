@@ -1,0 +1,3 @@
+StromEvents
+| extend EventDuration = EndTime - StartTime
+| summarize longestStorms = arg_max(EventDuration, EventType) by State
