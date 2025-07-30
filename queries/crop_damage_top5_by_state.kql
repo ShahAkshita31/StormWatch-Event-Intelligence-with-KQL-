@@ -1,0 +1,3 @@
+StromEvents
+| summarize CropDamage = max(DamageCrops) by State
+| take 5
