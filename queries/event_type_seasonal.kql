@@ -1,0 +1,16 @@
+let TopEventTypes = 
+    StromEvents
+    | summarize TotalCount = count() by EventType
+    | top 10 by TotalCount;
+StromEvents
+| extend Month = datetime_part("month", StartTime)
+| extend Season = case(
+    Month in (12, 1, 2), "Winter",
+    Month in (3, 4, 5), "Spring",
+    Month in (6, 7, 8), "Summer",
+    Month in (9, 10, 11), "Fall",
+    "Unknown"
+    )
+| join kind=inner (TopEventTypes) on EventType
+| summarize EventCount = count() by EventType, Season
+| order by EventType, Season
