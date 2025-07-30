@@ -1,0 +1,4 @@
+StromEvents
+| where InjuriesDirect > 0  and InjuriesIndirect > 0
+| extend CombinedImpact = InjuriesDirect + InjuriesIndirect
+| summarize arg_max(CombinedImpact, State, EventType) 
